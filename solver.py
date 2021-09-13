@@ -168,6 +168,18 @@ left_c2 = opt_mod.sum((valores[i][elementos.index('PB')]/100)*q[i] for i in rang
 right_c2 =  opt_mod.sum(((limitante[elementos.index('PB')]/100)*demanda - ((limitanteMaxInf[elementos.index('PB')]/100)*(limitante[elementos.index('PB')]/100)*demanda)) for i in range(len(ingredientes)))
 opt_mod.add_constraint(left_c2 >= right_c2, ctname='c2')
 
+left_c3 = opt_mod.sum((valores[i][elementos.index('PB')]/100)*q[i] for i in range(len(ingredientes)))
+right_c3 =  opt_mod.sum(((limitante[elementos.index('PB')]/100)*demanda + ((limitanteMaxSup[elementos.index('PB')]/100)*(limitante[elementos.index('PB')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c3 >= right_c3, ctname='c3')
+
+left_c4 = opt_mod.sum((valores[i][elementos.index('NDT')]/100)*q[i] for i in range(len(ingredientes)))
+right_c4 =  opt_mod.sum(((limitante[elementos.index('NDT')]/100)*demanda - ((limitanteMaxInf[elementos.index('NDT')]/100)*(limitante[elementos.index('NDT')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c4 >= right_c4, ctname='c4')
+
+left_c5 = opt_mod.sum((valores[i][elementos.index('NDT')]/100)*q[i] for i in range(len(ingredientes)))
+right_c5 =  opt_mod.sum(((limitante[elementos.index('NDT')]/100)*demanda + ((limitanteMaxSup[elementos.index('NDT')]/100)*(limitante[elementos.index('NDT')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c5 >= right_c5, ctname='c5')
+
 
 #Define a funcao objetivo
 opt_mod.set_objective('min', obj)
