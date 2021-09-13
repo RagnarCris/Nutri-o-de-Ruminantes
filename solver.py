@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Sep 13 01:01:36 2021
-
-@author: Cristiano
+@author: Cristiano e Matheus
 """
 from docplex.mp.model import Model
 
@@ -179,6 +177,7 @@ opt_mod.add_constraint(left_c4 >= right_c4, ctname='c4')
 left_c5 = opt_mod.sum((valores[i][elementos.index('NDT')]/100)*q[i] for i in range(len(ingredientes)))
 right_c5 =  opt_mod.sum(((limitante[elementos.index('NDT')]/100)*demanda + ((limitanteMaxSup[elementos.index('NDT')]/100)*(limitante[elementos.index('NDT')]/100)*demanda)) for i in range(len(ingredientes)))
 opt_mod.add_constraint(left_c5 <= right_c5, ctname='c5')
+
 
 left_c6 = opt_mod.sum((valores[i][elementos.index('PDR')]/100)*q[i] for i in range(len(ingredientes)))
 right_c6 =  opt_mod.sum(((limitante[elementos.index('PDR')]/100)*demanda - ((limitanteMaxInf[elementos.index('PDR')]/100)*(limitante[elementos.index('PDR')]/100)*demanda)) for i in range(len(ingredientes)))
