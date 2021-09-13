@@ -148,6 +148,14 @@ print('Limitante: ', limitante)
 print('Limitante Inferior: ', limitanteMaxInf)
 print('Limitante Superior: ', limitanteMaxSup)
 '''
- q = opt_mod.continuous_var_list(19)
- 
+#Define as 19 variaveis de decisao
+q = opt_mod.continuous_var_list(19)
+#Cria a expressão da funcao objetivo
+obj = opt_mod.sum((custo[i] * (q[i]/(porcentagemMN[i]/100))) for i in range(len(ingredientes)))
+
+#Define as restricoes
+
+
+#Define a funcao objetivo
+opt_mod.set_objective('min', obj)
 
