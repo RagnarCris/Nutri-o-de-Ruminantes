@@ -132,20 +132,7 @@ for linha in linhas:
         limSup_lista = aux.split(', ')
         for limSup in limSup_lista:
             limitanteMaxSup.append(float(limSup))
-            
-'''
-print('Ingredientes: ', ingredientes)
-print('Elementos: ', elementos)
-print('Demanda: ', demanda)
-print('Custo: ', custo)
-print('Porcentagens: ', porcentagemMN)
-print('Valores: ', valores)
-print('Minimo: ', minimo)
-print('Maximo: ', maximo)
-print('Limitante: ', limitante)
-print('Limitante Inferior: ', limitanteMaxInf)
-print('Limitante Superior: ', limitanteMaxSup)
-'''
+
 #Define as 19 variaveis de decisao
 q = opt_mod.continuous_var_list(len(ingredientes), lb=0.0)
 #Cria a expressão da funcao objetivo
