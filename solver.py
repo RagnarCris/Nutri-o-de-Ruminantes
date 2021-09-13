@@ -154,7 +154,7 @@ obj = opt_mod.sum((custo[i] * (q[i]/(porcentagemMN[i]/100))) for i in range(len(
 #Define as restricoes
 left_c1 = opt_mod.sum(q[i] for i in range(len(ingredientes)))
 right_c1 = demanda
-opt_mod.add_constraint(left_c1 = right_c1, ctname='c1')
+opt_mod.add_constraint(left_c1 == right_c1, ctname='c1')
 
 #Restricoes dos ingredientes
 opt_mod.add_constraints(q[i] >= (minimo[i]/100)*demanda for i in range(len(ingredientes)))
@@ -177,7 +177,6 @@ opt_mod.add_constraint(left_c4 >= right_c4, ctname='c4')
 left_c5 = opt_mod.sum((valores[i][elementos.index('NDT')]/100)*q[i] for i in range(len(ingredientes)))
 right_c5 =  opt_mod.sum(((limitante[elementos.index('NDT')]/100)*demanda + ((limitanteMaxSup[elementos.index('NDT')]/100)*(limitante[elementos.index('NDT')]/100)*demanda)) for i in range(len(ingredientes)))
 opt_mod.add_constraint(left_c5 <= right_c5, ctname='c5')
-
 
 left_c6 = opt_mod.sum((valores[i][elementos.index('PDR')]/100)*q[i] for i in range(len(ingredientes)))
 right_c6 =  opt_mod.sum(((limitante[elementos.index('PDR')]/100)*demanda - ((limitanteMaxInf[elementos.index('PDR')]/100)*(limitante[elementos.index('PDR')]/100)*demanda)) for i in range(len(ingredientes)))
@@ -239,8 +238,8 @@ left_c20 = opt_mod.sum((valores[i][elementos.index('K')]/100)*q[i] for i in rang
 right_c20 =  opt_mod.sum(((limitante[elementos.index('K')]/100)*demanda - ((limitanteMaxInf[elementos.index('K')]/100)*(limitante[elementos.index('K')]/100)*demanda)) for i in range(len(ingredientes)))
 opt_mod.add_constraint(left_c20 >= right_c20, ctname='c20')
 
-left_c21 = opt_mod.sum((valores[i][elementos.index('k')]/100)*q[i] for i in range(len(ingredientes)))
-right_c21 =  opt_mod.sum(((limitante[elementos.index('k')]/100)*demanda + ((limitanteMaxSup[elementos.index('K')]/100)*(limitante[elementos.index('K')]/100)*demanda)) for i in range(len(ingredientes)))
+left_c21 = opt_mod.sum((valores[i][elementos.index('K')]/100)*q[i] for i in range(len(ingredientes)))
+right_c21 =  opt_mod.sum(((limitante[elementos.index('K')]/100)*demanda + ((limitanteMaxSup[elementos.index('K')]/100)*(limitante[elementos.index('K')]/100)*demanda)) for i in range(len(ingredientes)))
 opt_mod.add_constraint(left_c21 <= right_c21, ctname='c21')
 
 left_c22 = opt_mod.sum((valores[i][elementos.index('Mg')]/100)*q[i] for i in range(len(ingredientes)))
@@ -259,6 +258,35 @@ left_c25 = opt_mod.sum((valores[i][elementos.index('S')]/100)*q[i] for i in rang
 right_c25 =  opt_mod.sum(((limitante[elementos.index('S')]/100)*demanda + ((limitanteMaxSup[elementos.index('S')]/100)*(limitante[elementos.index('S')]/100)*demanda)) for i in range(len(ingredientes)))
 opt_mod.add_constraint(left_c25 <= right_c25, ctname='c25')
 
+left_c26 = opt_mod.sum((valores[i][elementos.index('Co')])*q[i] for i in range(len(ingredientes)))
+right_c26 =  opt_mod.sum(((limitante[elementos.index('Co')])*demanda - ((limitanteMaxInf[elementos.index('Co')]/100)*(limitante[elementos.index('Co')])*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c26 >= right_c26, ctname='c26')
+
+left_c27 = opt_mod.sum((valores[i][elementos.index('Co')])*q[i] for i in range(len(ingredientes)))
+right_c27 =  opt_mod.sum(((limitante[elementos.index('Co')])*demanda + ((limitanteMaxSup[elementos.index('Co')]/100)*(limitante[elementos.index('Co')])*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c27 <= right_c27, ctname='c27')
+
+left_c28 = opt_mod.sum((valores[i][elementos.index('Se')])*q[i] for i in range(len(ingredientes)))
+right_c28 =  opt_mod.sum(((limitante[elementos.index('Se')])*demanda - ((limitanteMaxInf[elementos.index('Se')]/100)*(limitante[elementos.index('Se')])*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c28 >= right_c28, ctname='c28')
+
+left_c29 = opt_mod.sum((valores[i][elementos.index('Se')])*q[i] for i in range(len(ingredientes)))
+right_c29 =  opt_mod.sum(((limitante[elementos.index('Se')])*demanda + ((limitanteMaxSup[elementos.index('Se')]/100)*(limitante[elementos.index('Se')])*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c29 <= right_c29, ctname='c29')
+
+left_c30 = opt_mod.sum((valores[i][elementos.index('Zn')])*q[i] for i in range(len(ingredientes)))
+right_c30 =  opt_mod.sum(((limitante[elementos.index('Zn')])*demanda - ((limitanteMaxInf[elementos.index('Zn')]/100)*(limitante[elementos.index('Zn')])*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c30 >= right_c30, ctname='c30')
+
+left_c31 = opt_mod.sum((valores[i][elementos.index('Zn')])*q[i] for i in range(len(ingredientes)))
+right_c31 =  opt_mod.sum(((limitante[elementos.index('Zn')])*demanda + ((limitanteMaxSup[elementos.index('Zn')]/100)*(limitante[elementos.index('Zn')])*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c31 <= right_c31, ctname='c31')
+
 #Define a funcao objetivo
 opt_mod.set_objective('min', obj)
 
+opt_mod.print_information()
+
+opt_mod.solve()
+
+opt_mod.print_solution()
