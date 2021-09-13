@@ -170,7 +170,7 @@ opt_mod.add_constraint(left_c2 >= right_c2, ctname='c2')
 
 left_c3 = opt_mod.sum((valores[i][elementos.index('PB')]/100)*q[i] for i in range(len(ingredientes)))
 right_c3 =  opt_mod.sum(((limitante[elementos.index('PB')]/100)*demanda + ((limitanteMaxSup[elementos.index('PB')]/100)*(limitante[elementos.index('PB')]/100)*demanda)) for i in range(len(ingredientes)))
-opt_mod.add_constraint(left_c3 >= right_c3, ctname='c3')
+opt_mod.add_constraint(left_c3 <= right_c3, ctname='c3')
 
 left_c4 = opt_mod.sum((valores[i][elementos.index('NDT')]/100)*q[i] for i in range(len(ingredientes)))
 right_c4 =  opt_mod.sum(((limitante[elementos.index('NDT')]/100)*demanda - ((limitanteMaxInf[elementos.index('NDT')]/100)*(limitante[elementos.index('NDT')]/100)*demanda)) for i in range(len(ingredientes)))
@@ -178,7 +178,24 @@ opt_mod.add_constraint(left_c4 >= right_c4, ctname='c4')
 
 left_c5 = opt_mod.sum((valores[i][elementos.index('NDT')]/100)*q[i] for i in range(len(ingredientes)))
 right_c5 =  opt_mod.sum(((limitante[elementos.index('NDT')]/100)*demanda + ((limitanteMaxSup[elementos.index('NDT')]/100)*(limitante[elementos.index('NDT')]/100)*demanda)) for i in range(len(ingredientes)))
-opt_mod.add_constraint(left_c5 >= right_c5, ctname='c5')
+opt_mod.add_constraint(left_c5 <= right_c5, ctname='c5')
+
+left_c6 = opt_mod.sum((valores[i][elementos.index('PDR')]/100)*q[i] for i in range(len(ingredientes)))
+right_c6 =  opt_mod.sum(((limitante[elementos.index('PDR')]/100)*demanda - ((limitanteMaxInf[elementos.index('PDR')]/100)*(limitante[elementos.index('PDR')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c6 >= right_c6, ctname='c6')
+
+left_c7 = opt_mod.sum((valores[i][elementos.index('PDR')]/100)*q[i] for i in range(len(ingredientes)))
+right_c7 =  opt_mod.sum(((limitante[elementos.index('PDR')]/100)*demanda + ((limitanteMaxSup[elementos.index('PDR')]/100)*(limitante[elementos.index('PDR')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c7 <= right_c7, ctname='c7')
+
+left_c8 = opt_mod.sum((valores[i][elementos.index('PNDR')]/100)*q[i] for i in range(len(ingredientes)))
+right_c8 =  opt_mod.sum(((limitante[elementos.index('PNDR')]/100)*demanda - ((limitanteMaxInf[elementos.index('PNDR')]/100)*(limitante[elementos.index('PNDR')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c8 >= right_c8, ctname='c8')
+
+left_c9 = opt_mod.sum((valores[i][elementos.index('PNDR')]/100)*q[i] for i in range(len(ingredientes)))
+right_c9 =  opt_mod.sum(((limitante[elementos.index('PNDR')]/100)*demanda + ((limitanteMaxSup[elementos.index('PNDR')]/100)*(limitante[elementos.index('PNDR')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c9 <= right_c9, ctname='c9')
+
 
 
 #Define a funcao objetivo
