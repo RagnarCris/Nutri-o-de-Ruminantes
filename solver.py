@@ -160,7 +160,7 @@ opt_mod.add_constraint(left_c1 = right_c1, ctname='c1')
 
 opt_mod.add_constraints(q[i] >= (minimo[i]/100)*demanda for i in range(len(ingredientes)))
 
-opt_mod.add_constraints(q[i] >= (maximo[i]/100)*demanda for i in range(len(ingredientes)))
+opt_mod.add_constraints(q[i] <= (maximo[i]/100)*demanda for i in range(len(ingredientes)))
 
 
 #Define a funcao objetivo
