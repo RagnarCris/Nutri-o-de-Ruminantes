@@ -158,9 +158,15 @@ left_c1 = opt_mod.sum(q[i] for i in range(len(ingredientes)))
 right_c1 = demanda
 opt_mod.add_constraint(left_c1 = right_c1, ctname='c1')
 
+#Restricoes dos ingredientes
 opt_mod.add_constraints(q[i] >= (minimo[i]/100)*demanda for i in range(len(ingredientes)))
 
 opt_mod.add_constraints(q[i] <= (maximo[i]/100)*demanda for i in range(len(ingredientes)))
+
+#Restricoes dos elementos
+left_c2 = opt_mod.sum((valores[i][elementos.index('PB')]/100)*q[i] for i in range(len(ingredientes)))
+right_c2 =  opt_mod.sum(((limitante[elementos.index('PB')]/100)*demanda - ((limitanteMaxInf[elementos.index('PB')]/100)*(limitante[elementos.index('PB')]/100)*demanda)) for i in range(len(ingredientes)))
+opt_mod.add_constraint(left_c2 >= right_c2, ctname='c2')
 
 
 #Define a funcao objetivo
