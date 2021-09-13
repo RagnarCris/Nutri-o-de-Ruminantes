@@ -289,4 +289,4 @@ opt_mod.print_information()
 
 opt_mod.solve()
 
-opt_mod.print_solution()
+print(opt_mod.solution.get_values(q))
