@@ -14,7 +14,7 @@ elementos = []
 demanda = 1000
 custo = []
 porcentagemMN = []
-valores = [[]]
+valores = []
 minimo = []
 maximo = []
 limitante = []
@@ -132,14 +132,17 @@ for linha in linhas:
         for limSup in limSup_lista:
             limitanteMaxSup.append(float(limSup))
             
-print('Ingredientes: ' + ingredientes)
-print('Elementos: ' + elementos)
-print('Demanda: ' + demanda)
-print('Custo: ' + custo)
-print('Porcentagens: ' + porcentagemMN)
-print('Valores: ' + valores)
-print('Minimo: ' + minimo)
-print('Maximo: ' + maximo)
-print('Limitante: ' + limitante)
-print('Limitante Inferior: ' + limitanteMaxInf)
-print('Limitante Superior: ' + limitanteMaxSup)
+'''
+print('Ingredientes: ', ingredientes)
+print('Elementos: ', elementos)
+print('Demanda: ', demanda)
+print('Custo: ', custo)
+print('Porcentagens: ', porcentagemMN)
+print('Valores: ', valores)
+print('Minimo: ', minimo)
+print('Maximo: ', maximo)
+print('Limitante: ', limitante)
+print('Limitante Inferior: ', limitanteMaxInf)
+print('Limitante Superior: ', limitanteMaxSup)
+'''
+
