@@ -4,6 +4,9 @@ Created on Mon Sep 13 01:01:36 2021
 
 @author: Cristiano
 """
+from docplex.mp.model import Model
+
+opt_mod = Model(name = 'Linear Program')
 
 data_file = open('dados.txt', 'r')
 
@@ -145,4 +148,6 @@ print('Limitante: ', limitante)
 print('Limitante Inferior: ', limitanteMaxInf)
 print('Limitante Superior: ', limitanteMaxSup)
 '''
+ q = opt_mod.continuous_var_list(19)
+ 
 
