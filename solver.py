@@ -154,7 +154,9 @@ q = opt_mod.continuous_var_list(19)
 obj = opt_mod.sum((custo[i] * (q[i]/(porcentagemMN[i]/100))) for i in range(len(ingredientes)))
 
 #Define as restricoes
-
+left_c1 = opt_mod.sum(q[i] for i in range(len(ingredientes)))
+right_c1 = demanda
+c1 = opt_mod.add_constraint(left_c1 = right_c1, ctname='c1')
 
 #Define a funcao objetivo
 opt_mod.set_objective('min', obj)
