@@ -1,0 +1,17 @@
+Objetivo: 589.088
+Silagem de milho: 450.0
+Fuba de milho: 188.512
+Farelo de trigo: 47.929
+Polpa citrica: 50.0
+Oleo de soja: 17.299
+Caroco de algodao: 100.0
+Farelo de soja: 103.312
+Ureia: 7.581
+Sulfato de Amonio: 1.374
+Calcario Calcitico: 13.839
+Fosfato bicalcico: 7.865
+Sal: 5.161
+Cloreto de Potassio: 7.054
+Sulfato de Cobalto: 0.0
+Selenito de Sodio: 0.001
+Sulfato de Zinco: 0.074

@@ -133,8 +133,12 @@ for linha in linhas:
         for limSup in limSup_lista:
             limitanteMaxSup.append(float(limSup))
 
+def nomeia():
+    return ingredientes
+    
+
 #Define as 19 variaveis de decisao
-q = opt_mod.continuous_var_list(len(ingredientes), lb=0.0)
+q = opt_mod.continuous_var_list(len(ingredientes), lb=0.0, name=nomeia())
 #Cria a expressão da funcao objetivo
 obj = sum((custo[i] * (q[i]/(porcentagemMN[i]/100))) for i in range(len(ingredientes)))
 
@@ -276,4 +280,13 @@ opt_mod.print_information()
 
 opt_mod.solve()
 
-opt_mod.print_solution()
+saida = open('saida_solver.txt', 'w+')
+
+saida.write('Objetivo: ' + str(round(opt_mod.objective_value, 3)) + '\n')
+
+print('\nObjetivo: ', round(opt_mod.objective_value, 3))
+for j in opt_mod.solution.iter_var_values():
+    print(str(j[0]) + ': ' + str(round(j[1], 3)))
+    saida.write(str(j[0]) + ': ' + str(round(j[1], 3)) + '\n') 
+
+saida.close()
